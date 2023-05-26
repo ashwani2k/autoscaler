@@ -35,5 +35,6 @@ For Gardener we have used v1.27.1 to be on the safer side for future patch relea
 
 ### Others
 - [Release matrix](../README.md#releases-gardenerautoscaler) of Gardener Autoscaler updated.
+- `Go-Lang` version updated in the `.ci/pipeline_definitions` file to v1.20.4 from v1.19.5. (*this is required otherwise the concourse build job will continue to fail as it runs with what is defined in the pipeline_definition file and not what's merged in go.mod)*
 - With Kubernetes 1.27, the feature gates `CSIMigration` and `CSIMigrationAWS` will not be supported anymore. See [this](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates-removed/#descriptions-for-removed-feature-gates).
 CSIMigration PR on gardener, which mutates CA feature gates by gardener extensions -> https://github.com/gardener/gardener/pull/6047/. 
