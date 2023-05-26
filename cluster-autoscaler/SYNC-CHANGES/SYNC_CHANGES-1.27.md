@@ -19,6 +19,11 @@ For Gardener we have used v1.27.1 to be on the safer side for future patch relea
 ## Changes made
  - See general release notes of 1.27.1: https://github.com/kubernetes/autoscaler/releases/tag/cluster-autoscaler-1.27.1
  - The cloudProvider interface has added a new method [`GetNodeGupConfig`](https://github.com/kubernetes/autoscaler/blob/41a957b7e8b8630cb4c3e7811bdcecf85c510f09/cluster-autoscaler/cloudprovider/cloud_provider.go#L139) which needs implementation. For now we have implemented this in our mcm_cloud_provider.go by returning nil. However, we need to investigate its usage and provide relevant implementation if required/desired with subsequent release.
+ - `Go-Lang` version updated from v1.19.5 to v1.20.4 in - 
+   -  `.ci/pipeline_definitions` 
+   - `cluster-autoscaler/Dockerfile`   
+   (*this is required otherwise the concourse build job will continue to fail as this release is build in upstream with go v1.20)*
+
 
 ### During merging
   - CA `Readme` was merged with upstream changes capturing `PATCH RELEASE` schedule for coming months. 
@@ -35,6 +40,5 @@ For Gardener we have used v1.27.1 to be on the safer side for future patch relea
 
 ### Others
 - [Release matrix](../README.md#releases-gardenerautoscaler) of Gardener Autoscaler updated.
-- `Go-Lang` version updated in the `.ci/pipeline_definitions` file to v1.20.4 from v1.19.5. (*this is required otherwise the concourse build job will continue to fail as it runs with what is defined in the pipeline_definition file and not what's merged in go.mod)*
 - With Kubernetes 1.27, the feature gates `CSIMigration` and `CSIMigrationAWS` will not be supported anymore. See [this](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates-removed/#descriptions-for-removed-feature-gates).
 CSIMigration PR on gardener, which mutates CA feature gates by gardener extensions -> https://github.com/gardener/gardener/pull/6047/. 
