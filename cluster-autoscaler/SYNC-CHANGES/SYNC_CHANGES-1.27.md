@@ -18,8 +18,8 @@ For Gardener we have used v1.27.1 to be on the safer side for future patch relea
 
 ## Changes made
  - See general release notes of 1.27.1: https://github.com/kubernetes/autoscaler/releases/tag/cluster-autoscaler-1.27.1
- - The cloudProvider interface has added a new method [`GetNodeGupConfig`](https://github.com/kubernetes/autoscaler/blob/41a957b7e8b8630cb4c3e7811bdcecf85c510f09/cluster-autoscaler/cloudprovider/cloud_provider.go#L139) which needs implementation. For now we have implemented this in our mcm_cloud_provider.go by returning nil. However, we need to investigate its usage and provide relevant implementation if required/desired with subsequent release.
- - `Go-Lang` version updated from v1.19.5 to v1.20.4 in - 
+ - The cloudProvider interface has added a new method [`GetNodeGpuConfig`](https://github.com/kubernetes/autoscaler/blob/41a957b7e8b8630cb4c3e7811bdcecf85c510f09/cluster-autoscaler/cloudprovider/cloud_provider.go#L139) which needs implementation. For now we have implemented this in our mcm_cloud_provider.go by returning nil. However, we need to investigate its usage and provide relevant implementation if required/desired with subsequent release.
+ - `Go-Lang` version updated from v1.19.5 to v1.20.5 in - 
    -  `.ci/pipeline_definitions` 
    - `cluster-autoscaler/Dockerfile`   
    (*this is required otherwise the concourse build job will continue to fail as this release is build in upstream with go v1.20)*
@@ -31,7 +31,8 @@ For Gardener we have used v1.27.1 to be on the safer side for future patch relea
      - 	ApSouth2RegionID     = "ap-south-2"     // Asia Pacific (Hyderabad).
 	   -  EuCentral2RegionID   = "eu-central-2"   // Europe (Zurich).
 	   -  EuSouth2RegionID     = "eu-south-2"     // Europe (Spain).
-  - A new controller `balancer` is added to the `autoscaler` repo at a peer level to `cluster-autoscaler` and `vertical-pod-autoscaler`. Currently with this release we have not consumed this in our usage of Cluster Autoscaler and will need further investigation. 
+  - A new controller `balancer` is added to the `autoscaler` repo at a peer level to `cluster-autoscaler` and `vertical-pod-autoscaler`. We will need further investigation to see if this component is useful for gardener. 
+  - The types for fields in `Readiness` struct in `clusterstate/clusterstate.go` are changed now to []string from int. 
 
 ### During vendoring k8s
 - mcm v0.47.0 -> 0.49.0
